@@ -7,35 +7,37 @@ export default class CityCard extends Component {
     render() {
         return (
             <View style={styles.card}>
-                    <Image style={styles.backgroundImage} source={{uri: this.props.item.background}} blurRadius={5}/>
-                    <View style={styles.left}>
-                        <View style={styles.city}>
-                            <Icon name="map-marker-outline" size={30} color="#ffffff" />
-                            <Text>{this.props.item.city}</Text>
+                <Image style={styles.backgroundImage} source={{uri: this.props.item.background}} blurRadius={5}/>
+                <View style={styles.left}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Day', {bg: this.props.item.background})}>
+                    <View style={styles.city}>
+                        <Icon name="map-marker-outline" size={30} color="#ffffff" />
+                        <Text>{this.props.item.city}</Text>
+                    </View>
+                    <View style={styles.weather}>
+                        <View style={styles.weatherInfo}>
+                            <Icon name={this.props.item.weatherIcon} size={40} color="#ffffff" />
+                            <Text>{this.props.item.weather}</Text> 
                         </View>
-                        <View style={styles.weather}>
-                            <View style={styles.weatherInfo}>
-                                <Icon name={this.props.item.weatherIcon} size={40} color="#ffffff" />
-                                <Text>{this.props.item.weather}</Text> 
-                            </View>
 
-                            <View style={styles.weatherTemperature}>
-                                <Text style={styles.degrees}>{this.props.item.temperature}°</Text> 
-                                <Text>{this.props.item.dayTemperature}°</Text> 
-                            </View>
+                        <View style={styles.weatherTemperature}>
+                            <Text style={styles.degrees}>{this.props.item.temperature}°</Text> 
+                            <Text>{this.props.item.dayTemperature}°</Text> 
+                        </View>
 
-                            <View style={styles.weatherWind}>
-                                <Text style={styles.weatherWindInfo}>{this.props.item.temperatureState}</Text> 
-                                <Text style={styles.weatherWindDirection}>{this.props.item.wind}</Text> 
-                            </View>
+                        <View style={styles.weatherWind}>
+                            <Text style={styles.weatherWindInfo}>{this.props.item.temperatureState}</Text> 
+                            <Text style={styles.weatherWindDirection}>{this.props.item.wind}</Text> 
                         </View>
                     </View>
-                    <View style={styles.verticalLine}></View>
-                    <TouchableOpacity style={styles.more} onPress={() => this.props.navigation.navigate('Week', {city: this.props.item.city, bg: this.props.item.background})}>
-                        <Text>{this.props.item.tomorrowDay} More ></Text>
-                        <Icon name={this.props.item.weatherIcon} size={60} color="#ffffff" />
-                        <Text>{this.props.item.tomorrowTemperature}°</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
+                </View>
+                <View style={styles.verticalLine}></View>
+                <TouchableOpacity style={styles.more} onPress={() => this.props.navigation.navigate('Week', {city: this.props.item.city, bg: this.props.item.background})}>
+                    <Text>{this.props.item.tomorrowDay} More ></Text>
+                    <Icon name={this.props.item.weatherIcon} size={60} color="#ffffff" />
+                    <Text>{this.props.item.tomorrowTemperature}°</Text>
+                </TouchableOpacity>
             </View>
         );
     }

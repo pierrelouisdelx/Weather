@@ -1,16 +1,45 @@
-import React from 'react';
-import { FlatList, ImageBackground } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, FlatList, ImageBackground, ScrollView } from 'react-native';
+import { Text } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import CityCard from '../components/CityCard.js';
+import DayCard from '../components/DayCard.js';
 
-const DayScreen = ({ navigation }) => {
-    return (
-        <ImageBackground source={require("../assets/images/background.jpg")} resizeMode="cover" style={styles.background}>
-            <FlatList data={this.state.data} 
+const url = "http://192.168.1.93:3000/day";
+
+export default DayScreen = ({route}) => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch(url)
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => console.error(error))
+    }, []);
+
+    return(
+        <ImageBackground source={{uri: route.params.bg}} resizeMode="cover" style={styles.background}>
+            <Text style={styles.city}>Today</Text>
+            <FlatList data={data}
+                contentContainerStyle={{paddingBottom: 20}} 
                 keyExtractor={item => item.id}
-                renderItem={({item}) => <CityCard item={item}/>} />
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => <DayCard item={item}/>} />
         </ImageBackground>
     );
 };
 
-export default DayScreen;
+const styles = StyleSheet.create({
+    background: {
+        width: '100%',
+        height: '100%',
+    },
+    city: {
+        backgroundColor: 'rgba(45, 81, 105, 0.5)',
+        fontSize: 50,
+        textAlign: 'center',
+        borderRadius: 25,
+        margin: 25,
+        paddingBottom: 10,
+    },
+});

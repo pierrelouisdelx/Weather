@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LandingScreen from './screens/Landing';
 import WeekScreen from './screens/Week';
+import DayScreen from './screens/Day';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ const App = () => {
             <Stack.Navigator>
                 <Stack.Screen name="Landing" component={LandingScreen} options={{headerShown: false}}/>
                 <Stack.Screen name="Week" component={WeekScreen} options={{headerShown: false}}/>
+                <Stack.Screen name="Day" component={DayScreen} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
