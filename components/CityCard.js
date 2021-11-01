@@ -26,7 +26,7 @@ export default class CityCard extends Component {
                         </View>
 
                         <View style={styles.weatherWind}>
-                            <Text style={styles.weatherWindInfo}>{this.props.item.temperatureState}</Text> 
+                            <Icon name='weather-windy' size={30} color="#ffffff" />
                             <Text style={styles.weatherWindDirection}>{this.props.item.wind}</Text> 
                         </View>
                     </View>
@@ -90,12 +90,6 @@ const styles = StyleSheet.create({
     weatherWind: {
         alignItems: 'center',
         marginTop: 15
-    },
-    weatherWindInfo: {
-        backgroundColor: '#00ff00',
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        borderRadius: 15,
     },
     weatherWindDirection: {
         marginTop: 10,

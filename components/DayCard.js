@@ -13,7 +13,7 @@ export default class DayCard extends Component {
                     <Icon name={this.props.item.weatherIcon} size={40} color="#ffffff" />
                     <View style={styles.weatherInfo}>
                         <Text style={styles.temperature}>{this.props.item.temperature}°</Text> 
-                        <Text>Forecast: {this.props.item.forecast}</Text> 
+                        <Text>Forecast: {this.props.item.forecast}</Text>
                         <Text>Rain: {this.props.item.humidity}%</Text>
                     </View>
                 </View>
