@@ -17,7 +17,7 @@ export default class WeekCard extends Component {
                     <View style={styles.weatherInfo}>
                         <Text style={styles.temperature}>{this.props.item.temperature}°</Text> 
                         <Text>Forecast: {this.props.item.forecast}</Text> 
-                        <Text>Humidity: {this.props.item.humidity}%</Text>
+                        <Text>Rain: {this.props.item.humidity}%</Text>
                     </View>
                 </View>
             </View>
