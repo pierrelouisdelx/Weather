@@ -15,13 +15,19 @@ export default LandingScreen = ({ navigation }) => {
     const [text, setText] = useState('');
 
     useEffect(() => {
-        for (city of cities)
-        {
-            fetch(`http://192.168.1.93:3000/city/${city}`)
-                .then((response) => response.json())
-                .then((json) => setData(json))
-                .catch((error) => console.error(error))
-        }
+        fetch("http://192.168.1.93:3000/city", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cities: cities,
+            })
+        })
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
     }, []);
 
     return (
