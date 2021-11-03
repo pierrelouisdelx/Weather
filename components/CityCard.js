@@ -9,7 +9,7 @@ export default class CityCard extends Component {
             <View style={styles.card}>
                 <Image style={styles.backgroundImage} source={{uri: this.props.item.background}} blurRadius={5}/>
                 <View style={styles.left}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Day', {bg: this.props.item.background})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Day', {city: this.props.item.city, bg: this.props.item.background})}>
                     <View style={styles.city}>
                         <Icon name="map-marker-outline" size={30} color="#ffffff" />
                         <Text>{this.props.item.city}</Text>

@@ -5,13 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import WeekCard from '../components/WeekCard.js';
 
-const url = "http://192.168.1.93:3000/week";
-
 export default WeekScreen = ({route}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(url)
+        fetch(`http://192.168.1.93:3000/week/${route.params.city}`)
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))

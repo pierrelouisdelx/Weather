@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AsyncStorage } from "react-native";
 
 import LandingScreen from './screens/Landing';
 import WeekScreen from './screens/Week';

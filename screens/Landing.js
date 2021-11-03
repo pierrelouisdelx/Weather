@@ -1,22 +1,34 @@
 import React,  { useEffect, useState } from 'react';
-import { StyleSheet, FlatList, ImageBackground, AsyncStorage} from 'react-native';
+import { StyleSheet, FlatList, ImageBackground, AsyncStoragei, TextInput, View} from 'react-native';
 
 import CityCard from '../components/CityCard';
 
-const url = "http://192.168.1.93:3000/city";
+cities = ['Tokyo']
+
+function search(city)
+{
+    fetch(`http://192.168.1.93:3000/search/${city}`);
+}
 
 export default LandingScreen = ({ navigation }) => {
     const [data, setData] = useState([]);
+    const [text, setText] = useState('');
 
     useEffect(() => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((json) => setData(json))
-            .catch((error) => console.error(error))
+        for (city of cities)
+        {
+            fetch(`http://192.168.1.93:3000/city/${city}`)
+                .then((response) => response.json())
+                .then((json) => setData(json))
+                .catch((error) => console.error(error))
+        }
     }, []);
 
     return (
-        <ImageBackground source={require("../assets/images/background.jpg")} resizeMode="cover" style={styles.background}>
+            <ImageBackground source={require("../assets/images/background.jpg")} resizeMode="cover" style={styles.background}>
+            <View style={styles.search}>
+                <TextInput placeholder="Search city" onSubmitEditing={text => search(text.nativeEvent.text)}/>
+            </View>
             <FlatList data={data}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => <CityCard item={item} navigation={navigation}/>}
@@ -30,5 +42,13 @@ const styles = StyleSheet.create({
     background: {
         width: '100%',
         height: '100%',
+    },
+    search: {
+        backgroundColor: 'rgba(45, 81, 105, 0.5)',
+        fontSize: 50,
+        textAlign: 'center',
+        borderRadius: 25,
+        margin: 25,
+        paddingBottom: 10,
     },
 });

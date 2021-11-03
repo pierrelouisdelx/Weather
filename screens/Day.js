@@ -5,13 +5,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import DayCard from '../components/DayCard.js';
 
-const url = "http://192.168.1.93:3000/day";
+const url = "";
 
 export default DayScreen = ({route}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(url)
+        fetch(`http://192.168.1.93:3000/day/${route.params.city}`)
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))
