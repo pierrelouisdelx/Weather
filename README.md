@@ -1,5 +1,5 @@
 ## A simple Weather App
-This is a simple Weather App using my own API. The purpose of this app was for me to learn react native.
+This is a simple Weather App using [my own API](https://github.com/Pierrelouisdelx/Weather-API). The purpose of this app was for me to learn react native.
 
 ![](assets/images/demo.png)
 
