@@ -9,7 +9,7 @@ export default class DayCard extends Component {
             <View style={styles.card}>
                 <Image style={styles.backgroundImage} source={require("../assets/images/night.jpg")}/>
                 <View style={styles.weather}>
-                    <Text style={styles.time}>{this.props.item.time}</Text>
+                    <Text style={styles.time}>{this.props.item.time}h</Text>
                     <Icon name={this.props.item.weatherIcon} size={40} color="#ffffff" />
                     <View style={styles.weatherInfo}>
                         <Text style={styles.temperature}>{this.props.item.temperature}°</Text> 

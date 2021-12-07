@@ -22,7 +22,7 @@ export default class CityCard extends Component {
 
                         <View style={styles.weatherTemperature}>
                             <Text style={styles.degrees}>{this.props.item.temperature}°</Text> 
-                            <Text>{this.props.item.temp}°</Text> 
+                            <Text>{this.props.item.temp}</Text>
                         </View>
 
                         <View style={styles.weatherWind}>
@@ -36,7 +36,7 @@ export default class CityCard extends Component {
                 <TouchableOpacity style={styles.more} onPress={() => this.props.navigation.navigate('Week', {city: this.props.item.city, bg: this.props.item.background})}>
                     <Text>{this.props.item.tomorrowDay} More ></Text>
                     <Icon name={this.props.item.tomorrowIcon} size={60} color="#ffffff" />
-                    <Text>{this.props.item.tomorrowTemp}°</Text>
+                    <Text>{this.props.item.tomorrowTemp}</Text>
                 </TouchableOpacity>
             </View>
         );

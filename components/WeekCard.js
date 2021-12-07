@@ -7,7 +7,7 @@ export default class WeekCard extends Component {
     render() {
         return (
             <View style={styles.card}>
-                <Image style={styles.backgroundImage} source={require("../assets/images/night.jpg")}/>
+                <Image style={styles.backgroundImage} source={{uri: this.props.item.bg}}/>
                 <View style={styles.weather}>
                     <View style={styles.day}>
                         <Text style={styles.weekDay}>{this.props.item.weekDay}</Text>
@@ -15,7 +15,7 @@ export default class WeekCard extends Component {
                     </View>
                     <Icon style={styles.icon} name={this.props.item.weatherIcon} size={40} color="#ffffff" />
                     <View style={styles.weatherInfo}>
-                        <Text style={styles.temperature}>{this.props.item.temperature}°</Text> 
+                        <Text style={styles.temperature}>{this.props.item.temperature}</Text>
                         <Text>Forecast: {this.props.item.forecast}</Text> 
                         <Text>Rain: {this.props.item.humidity}%</Text>
                     </View>
